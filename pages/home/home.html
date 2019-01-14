@@ -1,0 +1,52 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>主页</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <h2 style="font-weight:200" >
+        您的所有已绑定设备
+    </h2>
+  </div>
+
+    <div *ngFor="let item of objelist;let i = index" class="homlist">
+      <ion-row> 
+              <div class="col  ">
+                设备名称:&nbsp;{{item.name}}
+                <ion-icon name="ios-create-outline" (click)="beizhu(i)">
+                </ion-icon>
+              </div> 
+              <div class="col col-20 " col-offset-10>
+                <button ion-button class="julibutton" style="font-size:1rem" >
+                  {{item.juli}}公里
+                </button>
+              </div>    
+      </ion-row>
+      <ion-row> 
+          <div class="col">
+            设备电量:&nbsp;
+            <ion-icon name="md-battery-full" style="color:aquamarine"></ion-icon>&nbsp;
+            {{item.dianliang}}
+          </div>
+        </ion-row>
+      <div class="col">设备ID:&nbsp;{{item.id}}</div>
+      <ion-row> 
+        <div class="col">位置:&nbsp;{{item.getgps}}</div>
+          <button class="xiangqing" (click)="tiaozhuan(item.id,item.name)">
+             更多
+          </button>
+      </ion-row>
+        
+    </div>
+</ion-content>

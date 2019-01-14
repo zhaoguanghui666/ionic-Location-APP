@@ -1,0 +1,36 @@
+
+
+
+<ion-content padding class="co">
+
+  <div class="cont">
+    <ion-item class="color-rgb">
+        <ion-label fixed style="color:black">邮箱</ion-label>
+        <ion-input  type="text" placeholder="请输入邮箱号码" #username></ion-input>
+      </ion-item >
+      <ion-item class="color-rgb">
+        <ion-label fixed style="color:black">密码</ion-label>
+        <ion-input [type]="chekd?'text':'password'" placeholder="请输入密码" #password></ion-input>
+      </ion-item>
+      <ion-item class="color-rgb">
+          <ion-label fixed style="color:rgb(10, 10, 10)">确认密码</ion-label>
+          <ion-input [type]="chekd?'text':'password'" placeholder="请输入密码" #pas></ion-input>
+        </ion-item>
+    <ion-item no-lines class="color-rgb">
+      <label item-right (click)="showdig"> 
+        <ion-icon name="eye" [ngStyle]="{'display':chekd ===true ? 'block' : 'none' }"></ion-icon>
+        <ion-icon name="eye-off" [ngStyle]="{'display':chekd ===false ? 'block' : 'none' }"></ion-icon>
+      </label>
+      <!-- 布尔类型的值  类似于复选框 -->
+      <ion-toggle [(ngModel)]="chekd" ></ion-toggle>
+    </ion-item>
+    
+    <div style="text-align: center; margin-left: 30px; margin-right: 30px;">
+      <button class="-button" (click)="zhuce(pas)">
+        注册
+      </button>
+    </div>
+
+</div>
+
+</ion-content>

@@ -16,10 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-// 版本更新
-
   chekd = false;
-    周期状态值
   ionViewDidLoad() {
     this.chekd = false;
   }
@@ -36,3 +33,4 @@ export class RegisterPage {
   }
 
 }
+// 更新

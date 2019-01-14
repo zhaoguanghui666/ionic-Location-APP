@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ModelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+
+<ion-content padding>
+  <div class="juzhonga">
+    <h3 style="font-weight:100;">请选择查询的日期</h3>
+    <!-- inpt -->
+    <div class="shijiankuang">
+        <ion-item>
+             <ion-label>起止时间</ion-label>
+               <ion-datetime name="sqsj"
+               [(ngModel)]="start" 
+               displayFormat="YYYY/MM/DD"  cancelText="取消" doneText="确认" >
+             </ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>结束时间</ion-label>
+              <ion-datetime name="sqsj" displayFormat="YYYY/MM/DD" 
+              [(ngModel)]="end"
+              cancelText="取消" doneText="确认"  >
+            </ion-datetime>
+       </ion-item>
+    </div>
+    <div class="row woi">
+      <input type="button" value="取消" (click)="qxfanhui()" 
+      style="background-color:red;" ion-button class="btnq col col-30" > 
+      <div class="btnq col col-30"></div>
+      <input type="button" value="确定" ion-button class="btnq col col-30" (click)="okfanhui()" >
+    </div>
+  </div>
+
+</ion-content>
