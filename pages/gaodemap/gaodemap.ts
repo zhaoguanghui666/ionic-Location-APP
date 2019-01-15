@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ModelPage } from '../model/model';
 import { ConditionalExpr } from '@angular/compiler';
+import { Storage } from '@ionic/storage';
 // import { HomePage } from '../homepage/homepage';
 
 /**
@@ -38,13 +39,17 @@ export class GaodeMapPage {
   // 上一页返回的数据
   myNewData:"";
   myNewData2:"";
+  kaishi:any= "";
+  jieshu:any="";
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
+    private storage: Storage,
     public navParams: NavParams) {
       this.id = this.navParams.get('id');
       this.naum = this.navParams.get('name');
   }
+  
     // 页面初始
   ionViewDidEnter() {
   this.load();
@@ -79,14 +84,30 @@ export class GaodeMapPage {
     this.map.setFitView();
   }
 
+// 时间函数
+  p(){
+    this.storage.get('s_tart').then((val)=>{
+      this.kaishi=val;
+      console.log(val);
+  })
+  this.jieshu = this.storage.get('e_nd');
+    console.log(">>>"+this.jieshu.val);
+  console.log("==="+this.kaishi);
+  if(this.kaishi == ""){ 
+    // 如果没有选择的时间，就跳转到选择时间界面
+    let profileModal = this.modalCtrl.create(ModelPage);
+        profileModal.present();
+  }
+  console.log(this.kaishi);
+  // let profileModal = this.modalCtrl.create(ModelPage);
+  // profileModal.present();
+}
  
   
 // marker.setMap(this.map);
   // 弹框以及弹框的时间
-  p(){
-    let profileModal = this.modalCtrl.create(ModelPage);
-    profileModal.present();
-  }
+ 
+ 
 // 点击轨迹改变布尔值 跳转到轨迹回放
 mysh(){
    if(this.myshow == 1){
@@ -95,9 +116,14 @@ mysh(){
      this.myshow--;
    }
   //  this.map.clearMap();
-   this.p();
+  //  this.p();
+   let profileModal = this.modalCtrl.create(ModelPage);
+    profileModal.present();
    }
- 
+  //  退出回放
+    tuichuhuifang(){
+      this.navCtrl.pop()
+    }
 
   // 轨迹回放
   getloti(){

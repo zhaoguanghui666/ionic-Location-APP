@@ -8,6 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { RegisterPage } from '../pages/register/register';
 import { GaodeMapPage } from '../pages/gaodemap/gaodemap';
 import { ModelPage } from '../pages/model/model';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 import { HttpModule } from '@angular/http'
 import { ApiProvider } from '../providers/api/api';
@@ -23,8 +25,8 @@ import { ApiProvider } from '../providers/api/api';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
-
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
