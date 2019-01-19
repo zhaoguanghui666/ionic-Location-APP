@@ -11,6 +11,7 @@ import { ModelPage } from '../pages/model/model';
 import {EquipmentPage}from '../pages/equipment/equipment';
 import { IonicStorageModule } from '@ionic/storage';
 import {MyHttpService} from '../app/utility/myhttp.service';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { HttpModule } from '@angular/http'
 import { ApiProvider } from '../providers/api/api';
@@ -22,7 +23,8 @@ import { ApiProvider } from '../providers/api/api';
     RegisterPage,
     GaodeMapPage,
     EquipmentPage,
-    ModelPage
+    ModelPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { ApiProvider } from '../providers/api/api';
     RegisterPage,
     GaodeMapPage,
     EquipmentPage,
+    TabsPage,
     ModelPage
   ],
   providers: [
@@ -44,6 +47,7 @@ import { ApiProvider } from '../providers/api/api';
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
+    MyHttpService
     
 
 

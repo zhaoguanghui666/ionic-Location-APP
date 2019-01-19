@@ -23,7 +23,7 @@ export class MyHttpService {
         });
         myLoad.present();
 
-        return this.http.get(url,{withCredentials:true})
+        return this.http.get(url,{withCredentials:false})
             .map((response: Response) => {
                 myLoad.dismiss();
                 return response.json()
