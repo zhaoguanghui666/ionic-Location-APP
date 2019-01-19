@@ -4,6 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { ModelPage } from '../model/model';
 import { ConditionalExpr } from '@angular/compiler';
 import { Storage } from '@ionic/storage';
+import { Events } from 'ionic-angular';
 // import { HomePage } from '../homepage/homepage';
 
 /**
@@ -45,9 +46,15 @@ export class GaodeMapPage {
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     private storage: Storage,
+    public events: Events,
     public navParams: NavParams) {
       this.id = this.navParams.get('id');
       this.naum = this.navParams.get('name');
+      //events 使用
+      events.subscribe('user:login', (canshu) => {
+        // userEventData 是一个数组, so grab our first and only arg
+        console.log(canshu);
+       });
   }
   
     // 页面初始
@@ -88,16 +95,15 @@ export class GaodeMapPage {
   p(){
     this.storage.get('s_tart').then((val)=>{
       this.kaishi=val;
-      console.log(val);
+      console.log("==="+this.kaishi);
+      if(this.kaishi == ""){ 
+        // 如果没有选择的时间，就跳转到选择时间界面
+        let profileModal = this.modalCtrl.create(ModelPage);
+            profileModal.present();
+      }
   })
-  this.jieshu = this.storage.get('e_nd');
-    console.log(">>>"+this.jieshu.val);
-  console.log("==="+this.kaishi);
-  if(this.kaishi == ""){ 
-    // 如果没有选择的时间，就跳转到选择时间界面
-    let profileModal = this.modalCtrl.create(ModelPage);
-        profileModal.present();
-  }
+  
+
   console.log(this.kaishi);
   // let profileModal = this.modalCtrl.create(ModelPage);
   // profileModal.present();

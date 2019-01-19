@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import {MyHttpService} from '../../app/utility/myhttp.service';
 // import { RegisterPage } from '../register/register';
 
 @IonicPage()

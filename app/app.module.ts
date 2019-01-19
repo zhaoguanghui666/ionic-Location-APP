@@ -8,8 +8,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { RegisterPage } from '../pages/register/register';
 import { GaodeMapPage } from '../pages/gaodemap/gaodemap';
 import { ModelPage } from '../pages/model/model';
+import {EquipmentPage}from '../pages/equipment/equipment';
 import { IonicStorageModule } from '@ionic/storage';
-
+import {MyHttpService} from '../app/utility/myhttp.service';
 
 import { HttpModule } from '@angular/http'
 import { ApiProvider } from '../providers/api/api';
@@ -20,6 +21,7 @@ import { ApiProvider } from '../providers/api/api';
     MyApp,
     RegisterPage,
     GaodeMapPage,
+    EquipmentPage,
     ModelPage
   ],
   imports: [
@@ -33,6 +35,7 @@ import { ApiProvider } from '../providers/api/api';
     MyApp,
     RegisterPage,
     GaodeMapPage,
+    EquipmentPage,
     ModelPage
   ],
   providers: [
@@ -40,7 +43,8 @@ import { ApiProvider } from '../providers/api/api';
     SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider
+    ApiProvider,
+    
 
 
   ]
