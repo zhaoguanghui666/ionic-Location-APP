@@ -5,8 +5,8 @@
 
   <div class="cont">
     <ion-item class="color-rgb">
-        <ion-label fixed style="color:black">邮箱</ion-label>
-        <ion-input  type="text" placeholder="请输入邮箱号码" #username></ion-input>
+        <ion-label fixed style="color:black">手机号码</ion-label>
+        <ion-input  type="text" placeholder="请输入手机号码" [(ngModel)]="usernam" (ionBlur)="blurInput()"></ion-input>
       </ion-item >
       <ion-item class="color-rgb">
         <ion-label fixed style="color:black">密码</ion-label>
@@ -26,8 +26,8 @@
     </ion-item>
     
     <div style="text-align: center; margin-left: 30px; margin-right: 30px;">
-      <button class="-button" (click)="zhuce(pas)">
-        注册
+      <button class="-button" (click)="zhuce(pas,username,password)">
+        点击注册
       </button>
     </div>
 
