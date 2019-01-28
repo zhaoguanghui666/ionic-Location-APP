@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import {MyHttpService} from '../../app/utility/myhttp.service';
+
 // import { LoginPage } from '../login/login';
 /**
  * Generated class for the RegisterPage page.
@@ -18,6 +20,7 @@ export class RegisterPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private myHttp:MyHttpService,
     public alertCtrl: AlertController
     ) {
   }
@@ -38,15 +41,37 @@ export class RegisterPage {
       });
       alert.present();
     }
+      //前往数据库查看是否有当前用户、
+      if(this.usernam){
+        this.myHttp.sendRequest("http://127.0.0.1:8888/q_uery?q_uery="+this.usernam)
+        .subscribe((result:any)=>{
+          console.log(result);
+           if(result.user !=""){
+            const alert = this.alertCtrl.create({
+              title: '警告!',
+              subTitle: this.usernam+'--用户已注册!请重新填写',
+              buttons: ['确定']
+            });
+            alert.present();
+           }
+        })
+      }
   }
 
  // 注册信息判断
   zhuce(pad,password){
-      console.log(pad.value+"=="+password.value+"|||"+this.usernam);
-      if(pad.value && password.value && this.usernam !=""){
-         console.log("注册成功!"); 
+       console.log(pad.value+"=="+password.value);
+      if(pad.value =="" || password.value =="" || this.usernam ==""){
+         console.log("填写正确的资料!"); 
+         const alert = this.alertCtrl.create({
+          title: '警告!',
+          subTitle: '请填写完整的注册信息',
+          buttons: ['确定']
+        });
+        alert.present();
       }else{
-        console.log("注册失败!");
+        console.log("前往数据库!");
+
       }
   }
 
