@@ -33,7 +33,7 @@ export class ModelPage {
   }
   // 轨迹回放携带时间返回给数据给上一个页面
   okfanhui(){
-    this.events.publish('user:login',this.start,Date.now());
+    this.events.publish('user:login',this.start);
     this.storage.set('s_tart',this.start);
     this.storage.set('e_nd',this.end);
     this.navCtrl.pop();
