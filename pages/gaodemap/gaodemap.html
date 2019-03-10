@@ -13,7 +13,7 @@
 </ion-header>
 <ion-content>
       <div scroll="false" #map2 id="map_container2" ></div>
-      <div class="dingwei" *ngIf="myshow==1">
+      <div class="ding" *ngIf="myshow==1">
           <input type="button"value="获取位置" (click)="addMarker()"class="abtn">
           <input type="button"value="轨迹回放" class="abtn" (click)="mysh()">
           <input type="button"value="我的位置" (click)="dangqianweizhi()"class="abtn">
@@ -22,6 +22,7 @@
       <div class="dingwei" *ngIf="myshow==2">
         <input type="button"value="开始回放" class="abtn" style= "color:red;border: 2px solid red"(click)="p()">
         <input type="button"value="暂停回放" class="abtn" style= "color:red;border: 2px solid red" (click)="zanting()" >
+        <input type="button"value="选择时间" class="abtn" style= "color:red;border: 2px solid red" (click)="Po()">
         <input type="button"value="退出回放" class="abtn" style= "color:red;border: 2px solid red" (click)="tuichuhuifang()">
     </div>
 </ion-content>

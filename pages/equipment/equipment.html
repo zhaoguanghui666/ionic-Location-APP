@@ -14,5 +14,33 @@
 
 
 <ion-content padding>
-
+  <div *ngFor="let item of objelist;let i = index" class="homlist">
+    <ion-row> 
+            <div class="col  ">
+              设备名称:&nbsp;{{item.name}}
+              <!-- <ion-icon name="ios-create-outline" (click)="beizhu(i)">
+              </ion-icon> -->
+            </div> 
+            <div class="col col-20 posi " col-offset-10>
+              <button ion-button class="julibutton" style="font-size:1rem" (click)="split(i)" >
+                删除设备
+              </button>
+            </div>    
+    </ion-row>
+    <ion-row> 
+        <div class="col">
+          设备电量:&nbsp;
+          <ion-icon name="md-battery-full" style="color:aquamarine"></ion-icon>&nbsp;
+          {{item.dianliang}}
+        </div>
+      </ion-row>
+    <div class="col">设备ID:&nbsp;{{item.id}}</div>
+    <ion-row> 
+      <div class="col">位置:&nbsp;{{item.getgps}}</div>
+        <!-- <button class="xiangqing" (click)="tiaozhuan(item.id,item.name)">
+           删除此设备
+        </button> -->
+    </ion-row>
+      
+  </div>
 </ion-content>

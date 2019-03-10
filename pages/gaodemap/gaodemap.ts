@@ -84,6 +84,52 @@ export class GaodeMapPage {
       events.subscribe('user:login', (canshu) => {
         // userEventData 是一个数组, so grab our first and only arg
         console.log(canshu);
+          // 选择时间以后，跳转到地图展示;
+        if(canshu != ""){
+          this.map.remove([this.marker,this.marke]);
+          console.log("===-=-=-=");
+          // let Map = new AMap.Map("map_container2", {
+          //   resizeEnable: true,
+          //   center: [116.397428, 39.90923],
+          //   zoom: 17
+        // });
+          console.log("hah");
+        this.mar = new AMap.Marker({
+            map: this.map,
+            position: [116.478935,39.997761],
+            icon: "https://webapi.amap.com/images/car.png",
+            offset: new AMap.Pixel(-26, -13),
+            autoRotation: true,
+            angle:-90,
+        });
+    
+        //绘制轨迹
+        let polyline = new AMap.Polyline({
+            map: this.map,
+            path: this.lineArr,
+            showDir:true,
+            strokeColor: "#28F",  //线颜色
+            // strokeOpacity: 1,     //线透明度
+            strokeWeight: 6,      //线宽
+            // strokeStyle: "solid"  //线样式
+        });
+    
+        var passedPolyline = new AMap.Polyline({
+            map: this.map,
+            // path: lineArr,
+            strokeColor: "#AF5",  //线颜色
+            // strokeOpacity: 1,     //线透明度
+            strokeWeight: 6,      //线宽
+            // strokeStyle: "solid"  //线样式
+        });
+        console.log("duandian-=-=");
+    
+        this.mar.on('moving', function (e) {
+            passedPolyline.setPath(e.passedPath);
+        });
+    
+        this.map.setFitView();
+        }
   
        });
   }
@@ -143,7 +189,7 @@ export class GaodeMapPage {
         let profileModal = this.modalCtrl.create(ModelPage);
             profileModal.present();
       }else{
-        
+        this.mar.moveAlong(this.lineArr, 200);
       }
   })
   
@@ -152,7 +198,11 @@ export class GaodeMapPage {
   // let profileModal = this.modalCtrl.create(ModelPage);
   // profileModal.present();
 }
- 
+//  选择轨迹回放时间
+Po(){
+  let profileModal = this.modalCtrl.create(ModelPage);
+  profileModal.present();
+ }
   
 // marker.setMap(this.map);
   // 弹框以及弹框的时间
@@ -177,51 +227,52 @@ mysh(){
     }
   //暂停回放
     zanting(){
-      // 以下内容为轨迹回放的所有代码，拆解到各个生命周期即可，注意变量名
-      this.map.remove([this.marker,this.marke]);
-      console.log("===-=-=-=");
-      // let Map = new AMap.Map("map_container2", {
-      //   resizeEnable: true,
-      //   center: [116.397428, 39.90923],
-      //   zoom: 17
+      this.mar.stopMove();
+    //   // 以下内容为轨迹回放的所有代码，拆解到各个生命周期即可，注意变量名
+    //   this.map.remove([this.marker,this.marke]);
+    //   console.log("===-=-=-=");
+    //   // let Map = new AMap.Map("map_container2", {
+    //   //   resizeEnable: true,
+    //   //   center: [116.397428, 39.90923],
+    //   //   zoom: 17
+    // // });
+    //   console.log("hah");
+    // this.mar = new AMap.Marker({
+    //     map: this.map,
+    //     position: [116.478935,39.997761],
+    //     icon: "https://webapi.amap.com/images/car.png",
+    //     offset: new AMap.Pixel(-26, -13),
+    //     autoRotation: true,
+    //     angle:-90,
     // });
-      console.log("hah");
-    this.mar = new AMap.Marker({
-        map: this.map,
-        position: [116.478935,39.997761],
-        icon: "https://webapi.amap.com/images/car.png",
-        offset: new AMap.Pixel(-26, -13),
-        autoRotation: true,
-        angle:-90,
-    });
 
-    //绘制轨迹
-    let polyline = new AMap.Polyline({
-        map: this.map,
-        path: this.lineArr,
-        showDir:true,
-        strokeColor: "#28F",  //线颜色
-        // strokeOpacity: 1,     //线透明度
-        strokeWeight: 6,      //线宽
-        // strokeStyle: "solid"  //线样式
-    });
+    // //绘制轨迹
+    // let polyline = new AMap.Polyline({
+    //     map: this.map,
+    //     path: this.lineArr,
+    //     showDir:true,
+    //     strokeColor: "#28F",  //线颜色
+    //     // strokeOpacity: 1,     //线透明度
+    //     strokeWeight: 6,      //线宽
+    //     // strokeStyle: "solid"  //线样式
+    // });
 
-    var passedPolyline = new AMap.Polyline({
-        map: this.map,
-        // path: lineArr,
-        strokeColor: "#AF5",  //线颜色
-        // strokeOpacity: 1,     //线透明度
-        strokeWeight: 6,      //线宽
-        // strokeStyle: "solid"  //线样式
-    });
-    console.log("duandian-=-=");
+    // var passedPolyline = new AMap.Polyline({
+    //     map: this.map,
+    //     // path: lineArr,
+    //     strokeColor: "#AF5",  //线颜色
+    //     // strokeOpacity: 1,     //线透明度
+    //     strokeWeight: 6,      //线宽
+    //     // strokeStyle: "solid"  //线样式
+    // });
+    // console.log("duandian-=-=");
 
-    this.mar.on('moving', function (e) {
-        passedPolyline.setPath(e.passedPath);
-    });
-        console.log("堆栈");
-    this.map.setFitView();
-    this.mar.moveAlong(this.lineArr, 200);
+    // this.mar.on('moving', function (e) {
+    //     passedPolyline.setPath(e.passedPath);
+    // });
+
+    // this.map.setFitView();
+    // this.mar.moveAlong(this.lineArr, 200);
     } 
   // 轨迹回放
   getloti(){

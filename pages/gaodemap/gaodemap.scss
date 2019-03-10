@@ -15,12 +15,19 @@ page-gaodemap {
 	}
 	.dingwei{
 		width: 12rem;
-		height:15rem;
+		height:16rem;
 		position: fixed;
-		bottom: 8%;
+		bottom: 15%;
 		right: 2%;
 		border-radius: 3px; 
-		background-color: rgb(255, 255, 255);
+	}
+	.ding{
+		width: 12rem;
+		height:13rem;
+		position: fixed;
+		bottom: 12%;
+		right: 2%;
+		border-radius: 3px;
 	}
 
 }

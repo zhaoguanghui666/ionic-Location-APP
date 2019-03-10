@@ -50,6 +50,7 @@ export class LoginPage {
    if(this.user != "" && this.pad != ""){
     this.myHttp.sendRequest("http://127.0.0.1:8888/del_user?uname="+this.user+"&upwd="+this.pad)
     .subscribe((result:any)=>{
+      console.log("shuju"+result);
        if(result !=""){
           this.navCtrl.push(TabsPage);
        }else{
